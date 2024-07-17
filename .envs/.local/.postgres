@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=djangoapiwithdeeplearning
+POSTGRES_USER=hNeXVujNkvZYhVuVpbxUVVshsGlWyDWr
+POSTGRES_PASSWORD=4XQY3AAUBYoMndvfd4H1cRCZc5zt5NKLOLd310Nqb5sDRuXCnllTGOzvA2675Y81
