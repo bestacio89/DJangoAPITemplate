@@ -1,5 +1,3 @@
-Certainly! Below is a README.md file that explains how to use the `broader_utils` package, which includes generic utilities for handling data and files within your Django API project.
-
 ### README.md
 
 ```markdown
