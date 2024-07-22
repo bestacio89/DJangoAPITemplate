@@ -43,19 +43,19 @@ RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
   && rm -rf /wheels/
 
 # Copy scripts and entrypoints
-COPY compose/production/django/entrypoint /entrypoint
+COPY DJangoAPITemplate/compose/production/django/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint && chmod +x /entrypoint
 
-COPY compose/local/django/start /start
+COPY ./start /start
 RUN sed -i 's/\r$//g' /start && chmod +x /start
 
-COPY compose/local/django/celery/worker/start /start-celeryworker
+COPY ./celery/worker/start /start-celeryworker
 RUN sed -i 's/\r$//g' /start-celeryworker && chmod +x /start-celeryworker
 
-COPY compose/local/django/celery/beat/start /start-celerybeat
+COPY ./celery/beat/start /start-celerybeat
 RUN sed -i 's/\r$//g' /start-celerybeat && chmod +x /start-celerybeat
 
-COPY compose/local/django/celery/flower/start /start-flower
+COPY ./celery/flower/start /start-flower
 RUN sed -i 's/\r$//g' /start-flower && chmod +x /start-flower
 
 # Copy application code to WORKDIR
