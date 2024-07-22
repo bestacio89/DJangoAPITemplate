@@ -37,16 +37,16 @@ jobs:
         uses: actions/checkout@v4
       - name: Build Local Environment
         run: |
-          docker compose -f ../compose/local/django/docker-compose.yml build django
+          docker compose -f ./compose/local/django/docker-compose.yml build django
       - name: Run DB Migrations in Local Environment
         run: |
-          docker compose -f ../compose/local/django/docker-compose.yml run --rm django python manage.py migrate
+          docker compose -f ./compose/local/django/docker-compose.yml run --rm django python manage.py migrate
       - name: Run Tests in Local Environment
         run: |
-          docker compose -f ../compose/local/django/docker-compose.yml run django pytest
+          docker compose -f ./compose/local/django/docker-compose.yml run django pytest
       - name: Tear down Local Environment
         run: |
-          docker compose -f ../compose/local/django/docker-compose.yml down
+          docker compose -f ./compose/local/django/docker-compose.yml down
       - name: Create Pull Request from Develop to Main
         if: success()
         env:
