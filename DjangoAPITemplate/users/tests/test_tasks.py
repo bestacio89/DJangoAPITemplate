@@ -1,8 +1,8 @@
 import pytest
 from celery.result import EagerResult
 
-from djangoapiwithdeeplearning.users.tasks import get_users_count
-from djangoapiwithdeeplearning.users.tests.factories import UserFactory
+from DjangoAPITemplate.users.tasks import get_users_count
+from DjangoAPITemplate.users.tests.factories import UserFactory
 
 pytestmark = pytest.mark.django_db
 

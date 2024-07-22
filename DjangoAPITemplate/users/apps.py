@@ -5,9 +5,9 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UsersConfig(AppConfig):
-    name = "djangoapiwithdeeplearning.users"
+    name = "DjangoAPITemplate.users"
     verbose_name = _("Users")
 
     def ready(self):
         with contextlib.suppress(ImportError):
-            import djangoapiwithdeeplearning.users.signals  # noqa: F401
+            import DjangoAPITemplate.users.signals  # noqa: F401

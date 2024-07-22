@@ -8,7 +8,7 @@ from django.contrib.auth.models import AnonymousUser
 from django.urls import reverse
 from pytest_django.asserts import assertRedirects
 
-from djangoapiwithdeeplearning.users.models import User
+from DjangoAPITemplate.users.models import User
 
 
 class TestUserAdmin:
@@ -48,7 +48,7 @@ class TestUserAdmin:
     def _force_allauth(self, settings):
         settings.DJANGO_ADMIN_FORCE_ALLAUTH = True
         # Reload the admin module to apply the setting change
-        import djangoapiwithdeeplearning.users.admin as users_admin
+        import DjangoAPITemplate.users.admin as users_admin
 
         with contextlib.suppress(admin.sites.AlreadyRegistered):  # type: ignore[attr-defined]
             reload(users_admin)

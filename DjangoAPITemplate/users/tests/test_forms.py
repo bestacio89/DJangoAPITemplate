@@ -2,8 +2,8 @@
 
 from django.utils.translation import gettext_lazy as _
 
-from djangoapiwithdeeplearning.users.forms import UserAdminCreationForm
-from djangoapiwithdeeplearning.users.models import User
+from DjangoAPITemplate.users.forms import UserAdminCreationForm
+from DjangoAPITemplate.users.models import User
 
 
 class TestUserAdminCreationForm:

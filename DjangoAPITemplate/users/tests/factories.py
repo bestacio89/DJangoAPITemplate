@@ -5,7 +5,7 @@ from factory import Faker
 from factory import post_generation
 from factory.django import DjangoModelFactory
 
-from djangoapiwithdeeplearning.users.models import User
+from DjangoAPITemplate.users.models import User
 
 
 class UserFactory(DjangoModelFactory):

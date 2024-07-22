@@ -1,8 +1,8 @@
 import pytest
 from rest_framework.test import APIRequestFactory
 
-from djangoapiwithdeeplearning.users.api.views import UserViewSet
-from djangoapiwithdeeplearning.users.models import User
+from DjangoAPITemplate.users.api.views import UserViewSet
+from DjangoAPITemplate.users.models import User
 
 
 class TestUserViewSet:

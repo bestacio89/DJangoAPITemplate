@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from djangoapiwithdeeplearning.users.models import User
+from DjangoAPITemplate.users.models import User
 
 
 class UserSerializer(serializers.ModelSerializer[User]):
