@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 # Copy requirements files and install dependencies
 COPY ./local.txt /requirements/
+COPY ./production.txt /requirements/
+COPY ./base.txt /requirements/
 RUN pip wheel --wheel-dir /usr/src/app/wheels -r /requirements/${BUILD_ENVIRONMENT}.txt
 
 # Python 'run' stage
