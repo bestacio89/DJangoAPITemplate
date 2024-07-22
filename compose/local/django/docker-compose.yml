@@ -87,7 +87,7 @@ services:
     container_name: flower
     volumes:
       - .:/app
-    command: /start-flower
+    command: /start.sh
     ports:
       - "5555:5555"
     depends_on:
