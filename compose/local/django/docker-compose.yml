@@ -10,8 +10,6 @@ services:
         BUILD_ENVIRONMENT: ${BUILD_ENVIRONMENT}
     image: my_django_app:local
     container_name: django
-    env_file:
-      - .env
     volumes:
       - .:/app
     ports:
@@ -49,8 +47,6 @@ services:
         BUILD_ENVIRONMENT: ${BUILD_ENVIRONMENT}
     image: my_django_app:local
     container_name: celeryworker
-    env_file:
-      - .env
     volumes:
       - .:/app
     command: /start-celeryworker
@@ -91,8 +87,6 @@ services:
         BUILD_ENVIRONMENT: ${BUILD_ENVIRONMENT}
     image: my_django_app:local
     container_name: flower
-    env_file:
-      - .env
     volumes:
       - .:/app
     command: /start-flower
