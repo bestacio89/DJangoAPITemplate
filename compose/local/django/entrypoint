@@ -8,13 +8,19 @@ set -o nounset
 
 # N.B. If only .env files supported variable expansion...
 export CELERY_BROKER_URL="${CELERY_BROKER_URL}"
+export CELERY_BROKER_URL="${CELERY_BROKER_URL}"
+export CELERY_RESULT_BACKEND="${CELERY_RESULT_BACKEND}"
+export POSTGRES_USER="${POSTGRES_USER}"
+export POSTGRES_PASSWORD="${POSTGRES_PASSWORD}"
+export POSTGRES_DB="${POSTGRES_DB}"
+
 
 
 if [ -z "${POSTGRES_USER}" ]; then
     base_postgres_image_default_user='postgres'
     export POSTGRES_USER="${base_postgres_image_default_user}"
 fi
-export DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}"
+export DATABASE_URL="db://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}"
 
 python << END
 import sys
