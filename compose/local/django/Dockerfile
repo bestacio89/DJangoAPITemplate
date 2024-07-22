@@ -43,7 +43,7 @@ RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
   && rm -rf /wheels/
 
 # Copy scripts and entrypoints
-COPY DJangoAPITemplate/compose/production/django/entrypoint /entrypoint
+COPY ../production/django/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint && chmod +x /entrypoint
 
 COPY ./start /start
