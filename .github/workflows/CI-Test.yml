@@ -1,11 +1,9 @@
 name: CI - Test
 
-# Enable Buildkit and let compose use it to speed up image building
 env:
   DOCKER_BUILDKIT: 1
   COMPOSE_DOCKER_CLI_BUILD: 1
 
-# Define the events that trigger this workflow
 on:
   pull_request:
     branches: ['develop']
@@ -14,7 +12,6 @@ on:
     branches: ['develop']
     paths-ignore: ['docs/**']
 
-# Define concurrency settings to ensure multiple workflows don't interfere
 concurrency:
   group: ${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
@@ -29,28 +26,34 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Run pre-commit
+        uses: pre-commit/action@v3.0.1
 
   build-test:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      CELERY_BROKER_URL: ${{ secrets.CELERY_BROKER_URL }}
+      CELERY_RESULT_BACKEND: ${{ secrets.CELERY_RESULT_BACKEND }}
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+      BUILD_ENVIRONMENT: local
     steps:
       - name: Checkout Code Repository
         uses: actions/checkout@v4
       - name: Build Local Environment
-        run: |
-          docker compose -f ./compose/local/django/docker-compose.yml build django
+        run: docker compose -f compose/local/docker-compose.yml build django
       - name: Run DB Migrations in Local Environment
-        run: |
-          docker compose -f ./compose/local/django/docker-compose.yml run --rm django python manage.py migrate
+        run: docker compose -f compose/local/docker-compose.yml run --rm django python manage.py migrate
       - name: Run Tests in Local Environment
-        run: |
-          docker compose -f ./compose/local/django/docker-compose.yml run django pytest
+        run: docker compose -f compose/local/docker-compose.yml run django pytest
       - name: Tear down Local Environment
-        run: |
-          docker compose -f ./compose/local/django/docker-compose.yml down
+        run: docker compose -f compose/local/docker-compose.yml down
       - name: Create Pull Request from Develop to Main
         if: success()
         env:
-          GITHUB_TOKEN: ${{ secrets.GITPR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh auth login --with-token <<< "${GITHUB_TOKEN}"
+          gh auth login --with-token <<< "${GITPR_TOKEN}"
           gh pr create --base main --head develop --title "Merge Develop to Main" --body "Automated PR created after successful tests."
