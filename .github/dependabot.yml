@@ -19,7 +19,7 @@ updates:
     directory: 'compose/local/django/'
     # Every weekday
     schedule:
-      interval: 'daily'
+      interval: 'weekly'
     # Ignore minor version updates (3.10 -> 3.11) but update patch versions
     ignore:
       - dependency-name: '*'
