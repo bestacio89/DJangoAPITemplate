@@ -4,7 +4,7 @@ import django.utils.timezone
 from django.db import migrations
 from django.db import models
 
-import djangoapiwithdeeplearning.users.models
+import djangoapiwithdeeplearning.infrastructure.users.models
 
 
 class Migration(migrations.Migration):
@@ -106,7 +106,7 @@ class Migration(migrations.Migration):
                 "abstract": False,
             },
             managers=[
-                ("objects", djangoapiwithdeeplearning.users.models.UserManager()),
+                ("objects", djangoapiwithdeeplearning.infrastructure.users.models.UserManager()),
             ],
         ),
     ]

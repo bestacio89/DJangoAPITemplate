@@ -1,7 +1,7 @@
 import pytest
 
-from djangoapiwithdeeplearning.users.models import User
-from djangoapiwithdeeplearning.users.tests.factories import UserFactory
+from djangoapiwithdeeplearning.infrastructure.users import User
+from djangoapiwithdeeplearning.infrastructure.users import UserFactory
 
 
 @pytest.fixture(autouse=True)

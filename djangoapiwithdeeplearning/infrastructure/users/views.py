@@ -6,7 +6,7 @@ from django.views.generic import DetailView
 from django.views.generic import RedirectView
 from django.views.generic import UpdateView
 
-from djangoapiwithdeeplearning.users.models import User
+from djangoapiwithdeeplearning.infrastructure.users.models import User
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):

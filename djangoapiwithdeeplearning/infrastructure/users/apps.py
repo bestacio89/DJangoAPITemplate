@@ -10,4 +10,4 @@ class UsersConfig(AppConfig):
 
     def ready(self):
         with contextlib.suppress(ImportError):
-            import djangoapiwithdeeplearning.users.signals  # noqa: F401
+            import djangoapiwithdeeplearning.infrastructure.users.signals  # noqa: F401

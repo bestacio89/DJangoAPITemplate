@@ -12,12 +12,12 @@ from django.test import RequestFactory
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
-from djangoapiwithdeeplearning.users.forms import UserAdminChangeForm
-from djangoapiwithdeeplearning.users.models import User
-from djangoapiwithdeeplearning.users.tests.factories import UserFactory
-from djangoapiwithdeeplearning.users.views import UserRedirectView
-from djangoapiwithdeeplearning.users.views import UserUpdateView
-from djangoapiwithdeeplearning.users.views import user_detail_view
+from djangoapiwithdeeplearning.infrastructure.users.forms import UserAdminChangeForm
+from djangoapiwithdeeplearning.infrastructure.users.models import User
+from djangoapiwithdeeplearning.infrastructure.users.tests.factories import UserFactory
+from djangoapiwithdeeplearning.infrastructure.users.views import UserRedirectView
+from djangoapiwithdeeplearning.infrastructure.users.views import UserUpdateView
+from djangoapiwithdeeplearning.infrastructure.users.views import user_detail_view
 
 pytestmark = pytest.mark.django_db
 

@@ -1,4 +1,4 @@
-# GeneralUtilities/FileHandler.py
+# generalutilities/FileHandler.py
 import os
 
 def read_file(file_path):

@@ -1,4 +1,4 @@
-# GeneralUtilities/DataHandler.py
+# generalutilities/DataHandler.py
 import numpy as np
 
 def normalize_data(data):
