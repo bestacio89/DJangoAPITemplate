@@ -10,7 +10,7 @@ services:
     volumes:
       - ./docs:/docs:z
       - ./config:/app/config:z
-      - ./djangoapiwithdeeplearning:/app/djangoapiwithdeeplearning:z
+      - ./DjangoAPITemplate:/app/DjangoAPITemplate:z
     ports:
       - '9000:9000'
     command: /start-docs

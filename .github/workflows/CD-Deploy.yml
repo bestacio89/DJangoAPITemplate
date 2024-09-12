@@ -1,0 +1,35 @@
+name: CI - Deploy
+
+env:
+  DOCKER_BUILDKIT: 1
+  COMPOSE_DOCKER_CLI_BUILD: 1
+
+on:
+  push:
+    branches: ['main']
+    paths-ignore: ['docs/**']
+
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      CELERY_BROKER_URL: ${{ secrets.CELERY_BROKER_URL }}
+      CELERY_RESULT_BACKEND: ${{ secrets.CELERY_RESULT_BACKEND }}
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+      BUILD_ENVIRONMENT: production
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+      - name: Build Docs Environment
+        run: docker compose -f compose/local/docs/docker-compose.yml build docs
+      - name: Deploy to Production
+        run: |
+          docker compose -f compose/production/django/docker-compose.yml build django
+          docker compose -f compose/production/django/docker-compose.yml up -d

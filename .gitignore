@@ -272,7 +272,7 @@ tags
 dump.rdb
 
 ### Project template
-djangoapiwithdeeplearning/media/
+DjangoAPITemplate/media/
 
 .pytest_cache/
 .ipython/

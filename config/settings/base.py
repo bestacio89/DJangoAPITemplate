@@ -1,13 +1,13 @@
 # ruff: noqa: ERA001, E501
-"""Base settings to build other settings files upon."""
+"""base settings to build other settings files upon."""
 
 from pathlib import Path
 
 import environ
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-# djangoapiwithdeeplearning/
-APPS_DIR = BASE_DIR / "djangoapiwithdeeplearning"
+# DjangoAPITemplate/
+APPS_DIR = BASE_DIR / "DjangoAPITemplate"
 env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
@@ -85,7 +85,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "djangoapiwithdeeplearning.users",
+    "DjangoAPITemplate.users",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -94,7 +94,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {"sites": "djangoapiwithdeeplearning.contrib.sites.migrations"}
+MIGRATION_MODULES = {"sites": "DjangoAPITemplate.contrib.sites.migrations"}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -190,7 +190,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
-                "djangoapiwithdeeplearning.users.context_processors.allauth_settings",
+                "DjangoAPITemplate.users.context_processors.allauth_settings",
             ],
         },
     },
@@ -310,13 +310,13 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 # https://docs.allauth.org/en/latest/account/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # https://docs.allauth.org/en/latest/account/configuration.html
-ACCOUNT_ADAPTER = "djangoapiwithdeeplearning.users.adapters.AccountAdapter"
+ACCOUNT_ADAPTER = "DjangoAPITemplate.users.adapters.AccountAdapter"
 # https://docs.allauth.org/en/latest/account/forms.html
-ACCOUNT_FORMS = {"signup": "djangoapiwithdeeplearning.users.forms.UserSignupForm"}
+ACCOUNT_FORMS = {"signup": "DjangoAPITemplate.users.forms.UserSignupForm"}
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-SOCIALACCOUNT_ADAPTER = "djangoapiwithdeeplearning.users.adapters.SocialAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "DjangoAPITemplate.users.adapters.SocialAccountAdapter"
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-SOCIALACCOUNT_FORMS = {"signup": "djangoapiwithdeeplearning.users.forms.UserSocialSignupForm"}
+SOCIALACCOUNT_FORMS = {"signup": "DjangoAPITemplate.users.forms.UserSocialSignupForm"}
 
 # django-rest-framework
 # -------------------------------------------------------------------------------
