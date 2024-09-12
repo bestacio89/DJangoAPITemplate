@@ -1,5 +1,5 @@
 # ruff: noqa: ERA001, E501
-"""Base settings to build other settings files upon."""
+"""base settings to build other settings files upon."""
 
 from pathlib import Path
 
