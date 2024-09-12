@@ -272,7 +272,7 @@ tags
 dump.rdb
 
 ### Project template
-DjangoAPITemplate/media/
+djangoapitemplate/media/
 
 .pytest_cache/
 .ipython/
